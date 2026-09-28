@@ -1,0 +1,16 @@
+[Unit]
+Description=PanSou Web - static frontend for netdisk search
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/hatch/workspace/pansou-web/www
+ExecStart=/usr/bin/python3 -m http.server 8890 --bind 127.0.0.1
+Restart=always
+RestartSec=5
+StandardOutput=append:/home/hatch/workspace/pansou-web/data/pansou-web.log
+StandardError=append:/home/hatch/workspace/pansou-web/data/pansou-web.log
+
+[Install]
+WantedBy=multi-user.target

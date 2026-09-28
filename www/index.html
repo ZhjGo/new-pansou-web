@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PanSou 搜索 · 一站式全网资源搜索</title>
+<meta name="description" content="PanSou 搜索：聚合百度网盘、阿里云盘、夸克、迅雷等多个网盘搜索源，一站式全网资源搜索">
+<meta name="keywords" content="PanSou,网盘搜索,资源搜索,百度网盘搜索,阿里云盘搜索,夸克网盘">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#2f7cf6">
+<link rel="canonical" href="https://new-pansou.jkai.de/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PanSou 搜索 · 一站式全网资源搜索">
+<meta property="og:description" content="聚合多个网盘搜索源，一站式全网资源搜索">
+<meta property="og:url" content="https://new-pansou.jkai.de/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='16' fill='%232f7cf6'/%3E%3Ccircle cx='28' cy='27' r='11' fill='none' stroke='white' stroke-width='5'/%3E%3Cline x1='36' y1='35' x2='47' y2='46' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css?v=20260928a">
+</head>
+<body>
+<div class="app">
+  <!-- 左侧导航 -->
+  <aside class="sidebar">
+    <div class="side-logo" id="logoHome" title="PanSou 搜索">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="4" y="4" width="56" height="56" rx="16" fill="#2f7cf6"/>
+        <circle cx="28" cy="27" r="11" fill="none" stroke="#fff" stroke-width="5"/>
+        <line x1="36" y1="35" x2="47" y2="46" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="47" cy="15" r="2.6" fill="#fff" opacity=".9"/>
+        <circle cx="15" cy="47" r="2.6" fill="#fff" opacity=".9"/>
+      </svg>
+    </div>
+    <nav class="side-nav">
+      <button class="nav-item" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+        <span>首页</span>
+      </button>
+      <button class="nav-item" data-nav="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        <span>搜索</span>
+      </button>
+      <button class="nav-item" data-nav="history">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <span>历史</span>
+      </button>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <!-- 首页 -->
+    <section class="view" id="view-home">
+      <div class="hero">
+        <div class="hero-sun"></div>
+        <svg class="hero-mountains" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 220 L0 150 L180 60 L340 150 L520 40 L700 140 L880 70 L1060 160 L1240 90 L1440 150 L1440 220 Z" fill="#d7e6f7" opacity=".55"/>
+          <path d="M0 220 L0 180 L240 110 L460 180 L720 100 L980 180 L1220 120 L1440 180 L1440 220 Z" fill="#c3d9f2" opacity=".65"/>
+        </svg>
+        <div class="hero-inner">
+          <p class="eyebrow"><span class="eyebrow-dash"></span>汇聚多源，一次找到</p>
+          <h1>一站式全网资源搜索</h1>
+          <p class="hero-sub">聚合多个网盘搜索源，快速找到你需要的资源</p>
+          <div class="search-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#9aa6b8" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+            <input id="heroInput" type="search" placeholder="搜索电影、小说、软件、课程、学习资料…" autocomplete="off" enterkeyhint="search">
+            <button class="btn-blue btn-inpill" id="heroBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+              搜索
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h2>热门搜索</h2>
+              <p class="card-sub">全站用户真实搜索热度</p>
+            </div>
+            <button class="link-btn" id="hotRefresh">刷新</button>
+          </div>
+          <div class="hot-list" id="hotList"></div>
+        </div>
+
+        <button class="card feature-card" id="featureCard">
+          <span class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f7cf6" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+          </span>
+          <span class="feature-text">
+            <b>全网资源一触即达</b>
+            <i>支持多个网盘平台 · 智能解析 · 秒速直达</i>
+          </span>
+          <span class="chev">›</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 搜索结果 -->
+    <section class="view" id="view-results" hidden>
+      <div class="result-top">
+        <button class="back-btn" id="backBtn" title="返回首页">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9aa6b8" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+          <input id="resultInput" type="search" autocomplete="off" enterkeyhint="search" placeholder="搜索资源…">
+        </div>
+        <button class="btn-blue" id="resultBtn">搜索</button>
+      </div>
+      <div class="content">
+        <div class="tabs" id="tabs"></div>
+        <div class="result-meta">
+          <span id="resultCount"></span>
+          <div class="grow"></div>
+          <label for="sortSelect">排序</label>
+          <select class="sort-select" id="sortSelect">
+            <option value="smart">综合排序</option>
+            <option value="new">时间最新优先</option>
+            <option value="old">时间最旧优先</option>
+          </select>
+        </div>
+        <div class="cards" id="cards"></div>
+        <div class="pager" id="pager"></div>
+      </div>
+    </section>
+
+    <!-- 搜索历史 -->
+    <section class="view" id="view-history" hidden>
+      <div class="content">
+        <div class="hist-head">
+          <div>
+            <h2 class="page-title">搜索历史</h2>
+            <p class="card-sub">重新打开最近查找过的资源</p>
+          </div>
+          <button class="link-btn" id="clearHist">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13"/></svg>
+            清空历史
+          </button>
+        </div>
+        <div class="hist-list" id="histList"></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- 卡片右上角菜单 -->
+<div class="menu" id="cardMenu" hidden></div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/app.js?v=20260928a"></script>
+</body>
+</html>
